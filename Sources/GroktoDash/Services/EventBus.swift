@@ -161,7 +161,9 @@ public final class EventBus {
                 hermesMsg.isStreaming = false
                 conv.updatedAt = Date()
                 try? modelContext.save()
+                indexConversation(conv)
                 fetchConversations()
+                updateWidgetData()
 
             } catch {
                 errorMessage = error.localizedDescription
@@ -220,6 +222,7 @@ public final class EventBus {
 
         case .approvalRequired(let runId, let tool, let choices):
             pendingApproval = (runId: runId, tool: tool, choices: choices)
+            deliverApprovalNotification(runId: runId, tool: tool)
 
         case .runCompleted(_, let output):
             streamingMessage?.content = output.isEmpty ? streamingMessage?.content ?? "" : output
