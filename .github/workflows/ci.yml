@@ -19,7 +19,21 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode.app
 
       - name: Build
-        run: swift build
+        run: |
+          xcodebuild -project GroktoDash.xcodeproj \
+            -scheme GroktoDash \
+            -destination 'platform=macOS' \
+            build \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
 
       - name: Test
-        run: swift test --filter GroktoDashKitTests
+        run: |
+          xcodebuild -project GroktoDash.xcodeproj \
+            -scheme GroktoDashKitTests \
+            -destination 'platform=macOS' \
+            test \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO

@@ -4,6 +4,7 @@
 DerivedData/
 build/
 *.xcbkptlist
+*.pbxproj.json
 
 # Swift Package Manager
 .build/
