@@ -77,9 +77,12 @@ public final class HermesClient: @unchecked Sendable {
         try validateResponse(response, data: data)
     }
 
-    // MARK: - SSE (placeholder — full implementation in M2)
+    // MARK: - SSE
 
-    /// Open an SSE event stream for a run. Returns an AsyncSequence of RunEvent.
+    /// Open an SSE event stream for a run. Returns an AsyncStream of ``RunEvent``.
+    ///
+    /// Uses ``SSESession`` to parse the byte stream into typed events.
+    /// Handles connection errors gracefully — the stream finishes on error.
     public func events(for runId: String) -> AsyncStream<RunEvent> {
         AsyncStream { continuation in
             Task {
@@ -94,10 +97,9 @@ public final class HermesClient: @unchecked Sendable {
                         return
                     }
 
-                    // SSE parsing will be implemented in M2 (SSESession)
-                    // For now, the stream is connected but events are not parsed.
-                    for try await _ in bytes.lines {
-                        // Stub: M2 will parse event: and data: lines
+                    let eventStream = SSESession.parse(bytes.lines)
+                    for await event in eventStream {
+                        continuation.yield(event)
                     }
                     continuation.finish()
                 } catch {
