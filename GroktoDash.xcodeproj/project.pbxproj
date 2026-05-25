@@ -127,6 +127,13 @@
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
 		</dict>
+		<key>1471AE82A17653D8C4624145</key>
+		<dict>
+			<key>fileRef</key>
+			<string>40E65BE2D3F7399154393E39</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>163EFDDF5365D038ADFD7045</key>
 		<dict>
 			<key>containerPortal</key>
@@ -268,6 +275,12 @@
 				<string>YES</string>
 				<key>DEVELOPMENT_TEAM</key>
 				<string></string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>GENERATE_INFOPLIST_FILE</key>
+				<string>YES</string>
+				<key>INFOPLIST_KEY_NSHumanReadableCopyright</key>
+				<string>MIT License</string>
 				<key>MACOSX_DEPLOYMENT_TARGET</key>
 				<string>26.0</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
@@ -276,6 +289,8 @@
 				<string>GroktoDashKit</string>
 				<key>PROVISIONING_PROFILE_SPECIFIER</key>
 				<string></string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
 				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
 				<string>DEBUG</string>
 				<key>SWIFT_OPTIMIZATION_LEVEL</key>
@@ -487,6 +502,11 @@
 				<string>YES</string>
 				<key>INFOPLIST_FILE</key>
 				<string>Config/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>@executable_path/../Frameworks</string>
+					<string>@loader_path/../Frameworks</string>
+				</array>
 				<key>MACOSX_DEPLOYMENT_TARGET</key>
 				<string>26.0</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
@@ -602,6 +622,12 @@
 				<string>YES</string>
 				<key>DEVELOPMENT_TEAM</key>
 				<string></string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>GENERATE_INFOPLIST_FILE</key>
+				<string>YES</string>
+				<key>INFOPLIST_KEY_NSHumanReadableCopyright</key>
+				<string>MIT License</string>
 				<key>MACOSX_DEPLOYMENT_TARGET</key>
 				<string>26.0</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
@@ -610,6 +636,8 @@
 				<string>GroktoDashKit</string>
 				<key>PROVISIONING_PROFILE_SPECIFIER</key>
 				<string></string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
 				<key>SWIFT_OPTIMIZATION_LEVEL</key>
 				<string>-O</string>
 				<key>SWIFT_VERSION</key>
@@ -625,7 +653,9 @@
 			<key>buildActionMask</key>
 			<integer>2147483647</integer>
 			<key>files</key>
-			<array/>
+			<array>
+				<string>1471AE82A17653D8C4624145</string>
+			</array>
 			<key>isa</key>
 			<string>PBXFrameworksBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
@@ -643,6 +673,13 @@
 			<string>Config/IntentsExtension-Info.plist</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>504FA684CB8E564DC9328C96</key>
+		<dict>
+			<key>fileRef</key>
+			<string>40E65BE2D3F7399154393E39</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>5217B77493A0F550212908AD</key>
 		<dict>
@@ -813,6 +850,7 @@
 				<string>4E194D57AA52CC7E25164F56</string>
 				<string>C345455C5295E828210B7ABB</string>
 				<string>F5C2C131B412C2486643C15E</string>
+				<string>F054627E4EDAA7CF3593EA53</string>
 			</array>
 			<key>buildRules</key>
 			<array/>
@@ -1027,6 +1065,11 @@
 				<string>YES</string>
 				<key>INFOPLIST_FILE</key>
 				<string>Config/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>@executable_path/../Frameworks</string>
+					<string>@loader_path/../Frameworks</string>
+				</array>
 				<key>MACOSX_DEPLOYMENT_TARGET</key>
 				<string>26.0</string>
 				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
@@ -1790,6 +1833,23 @@
 			<string>Config/GroktoDash.entitlements</string>
 			<key>sourceTree</key>
 			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>F054627E4EDAA7CF3593EA53</key>
+		<dict>
+			<key>buildActionMask</key>
+			<integer>2147483647</integer>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<integer>10</integer>
+			<key>files</key>
+			<array>
+				<string>504FA684CB8E564DC9328C96</string>
+			</array>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<integer>0</integer>
 		</dict>
 		<key>F22131082D19254ECE752CCF</key>
 		<dict>
