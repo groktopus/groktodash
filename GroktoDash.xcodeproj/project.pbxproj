@@ -267,8 +267,6 @@
 		<dict>
 			<key>buildSettings</key>
 			<dict>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEFINES_MODULE</key>
@@ -334,8 +332,6 @@
 		<dict>
 			<key>buildSettings</key>
 			<dict>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -366,8 +362,6 @@
 			<dict>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/GroktoDashIntents.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -460,8 +454,6 @@
 			<dict>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/GroktoDashWidgets.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -492,8 +484,6 @@
 			<dict>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/GroktoDash.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -614,8 +604,6 @@
 		<dict>
 			<key>buildSettings</key>
 			<dict>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEFINES_MODULE</key>
@@ -754,8 +742,6 @@
 			<dict>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/GroktoDashWidgets.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -786,8 +772,6 @@
 		<dict>
 			<key>buildSettings</key>
 			<dict>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -1055,8 +1039,6 @@
 			<dict>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/GroktoDash.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -1213,8 +1195,6 @@
 		<dict>
 			<key>buildSettings</key>
 			<dict>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -1287,8 +1267,6 @@
 			<dict>
 				<key>CODE_SIGN_ENTITLEMENTS</key>
 				<string>Config/GroktoDashIntents.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
@@ -1642,8 +1620,6 @@
 		<dict>
 			<key>buildSettings</key>
 			<dict>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>-</string>
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>DEVELOPMENT_TEAM</key>
