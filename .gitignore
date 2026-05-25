@@ -1,0 +1,29 @@
+# Xcode
+*.xcuserdata
+*.xcworkspace/xcuserdata/
+DerivedData/
+build/
+*.xcbkptlist
+
+# Swift Package Manager
+.build/
+Package.resolved
+.swiftpm/
+
+# CocoaPods (not used — policy prohibition)
+Pods/
+
+# Carthage (not used — policy prohibition)
+Carthage/
+
+# macOS
+.DS_Store
+*.dmg
+*.app
+
+# Archives
+*.zip
+*.tar.gz
+
+# CI
+.act/
