@@ -109,3 +109,81 @@ xcodebuild -scheme GroktoDash -destination 'platform=macOS' test
 2. Audit: MIT or Apache 2.0 license only. No GPL.
 3. Pin to a specific commit hash in SPM.
 4. Add to the dependency manifest in `docs/architecture.md`.
+
+## Xcode Project Setup
+
+GroktoDash uses `Package.swift` for SPM-based building and testing.  To
+build and run the full app (including Widget and App Intents extensions,
+which require an `.xcodeproj`), follow these steps:
+
+1. **Open Xcode 26.5+** on macOS Tahoe.
+2. **File → Open** and select `Package.swift`.  Xcode generates a workspace
+   from the SPM manifest, but this only builds the library and app targets —
+   not the extensions.
+3. **Create the Xcode project** for extension targets:
+   a. File → New → Project → macOS → App.  Name it `GroktoDash`,
+      bundle ID `com.groktopus.groktodash`.
+   b. Delete the generated `ContentView.swift` and `GroktoDashApp.swift` —
+      our source files replace them.
+   c. Add existing files: drag `Sources/GroktoDash/` into the project.
+   d. Add extension targets:
+      - File → New → Target → Widget Extension → name `GroktoDashWidgets`
+      - File → New → Target → App Intents Extension → name `GroktoDashIntents`
+      - Delete generated stub files in both extensions.
+      - Add `Sources/GroktoDashWidgets/` and `Sources/GroktoDashIntents/`
+        to their respective targets.
+4. **Add GroktoDashKit framework target**:
+   - File → New → Target → Framework → name `GroktoDashKit`
+   - Add `Sources/GroktoDashKit/` to this target.
+   - Mark GroktoDashKit as a dependency of the app and extension targets.
+5. **Configure build settings** for each target:
+   - Deployment target: macOS 26.0
+   - Swift Language Version: 6
+   - Enable Hardened Runtime: YES
+   - Code Signing Identity: "Sign to Run Locally" (development)
+6. **Assign entitlements** from `Config/`:
+   - App: `GroktoDash.entitlements`
+   - Widgets: `GroktoDashWidgets.entitlements`
+   - Intents: `GroktoDashIntents.entitlements`
+7. **Set Info.plist** for the app target to `Config/Info.plist`.
+8. **Enable App Groups** in Signing & Capabilities for all three targets:
+   `group.com.groktopus.groktodash`
+9. **Build & Run** (⌘R).
+
+### Entitlements Summary
+
+| Target | Entitlements |
+|--------|-------------|
+| GroktoDash (app) | App Sandbox, Network Client, Keychain Access |
+| GroktoDashWidgets | App Groups (`group.com.groktopus.groktodash`) |
+| GroktoDashIntents | App Groups (`group.com.groktopus.groktodash`) |
+| GroktoDashKit | None (framework inherits host entitlements) |
+
+### Code Signing for Development
+
+For local development, use "Sign to Run Locally" (no Apple Developer account
+needed for basic functionality).  Keychain access, notifications, and
+Spotlight require a valid signing identity — create one in Xcode → Settings
+→ Accounts.
+
+### Notarization
+
+Notarization is handled by `.github/workflows/release.yml`.  It requires
+three GitHub Actions secrets:
+
+| Secret | Description |
+|--------|-------------|
+| `APPLE_ID` | Apple Developer account email |
+| `APPLE_APP_SPECIFIC_PASSWORD` | App-specific password generated at appleid.apple.com |
+| `APPLE_TEAM_ID` | 10-character team ID from developer.apple.com |
+
+### Performance Profiling
+
+Streaming latency is instrumented with `os_signpost` in
+`EventBus+Signpost.swift`.  To profile:
+
+1. Build with `swift build -c release`
+2. Open Instruments (Xcode → Open Developer Tool → Instruments)
+3. Select "os_signpost" template
+4. Filter by subsystem `com.groktopus.groktodash`
+5. Observe "Run Streaming" begin/end intervals and "Text Delta" events

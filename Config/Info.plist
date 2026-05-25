@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.groktopus.groktodash</string>
+
+    <key>CFBundleName</key>
+    <string>GroktoDash</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>GroktoDash</string>
+
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <key>CFBundleExecutable</key>
+    <string>GroktoDash</string>
+
+    <key>LSMinimumSystemVersion</key>
+    <string>26.0</string>
+
+    <key>NSHighResolutionCapable</key>
+    <true/>
+
+    <!-- URL scheme for intent deep linking -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.groktopus.groktodash</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>groktodash</string>
+            </array>
+        </dict>
+    </array>
+
+    <!-- Spotlight search types -->
+    <key>NSUserActivityTypes</key>
+    <array>
+        <string>com.apple.corespotlightitem</string>
+    </array>
+
+    <!-- Siri Intents -->
+    <key>INIntentsSupported</key>
+    <array>
+        <string>AskHermesIntent</string>
+        <string>ContinueConversationIntent</string>
+        <string>AskHermesShortcut</string>
+    </array>
+</dict>
+</plist>

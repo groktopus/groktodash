@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build-and-notarize:
+    name: Build & Notarize
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Build (Release)
+        run: |
+          xcodebuild -scheme GroktoDash \
+            -destination 'platform=macOS' \
+            -configuration Release \
+            -derivedDataPath .build \
+            build
+
+      - name: Archive
+        run: |
+          xcodebuild -scheme GroktoDash \
+            -destination 'platform=macOS' \
+            -configuration Release \
+            -derivedDataPath .build \
+            archive -archivePath .build/GroktoDash.xcarchive
+
+      - name: Export App
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath .build/GroktoDash.xcarchive \
+            -exportPath .build/export \
+            -exportOptionsPlist Config/ExportOptions.plist
+
+      - name: Create DMG
+        run: |
+          hdiutil create -volname GroktoDash \
+            -srcfolder .build/export/GroktoDash.app \
+            -ov -format UDZO \
+            .build/GroktoDash.dmg
+
+      - name: Notarize
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          xcrun notarytool submit .build/GroktoDash.dmg \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --wait
+
+      - name: Staple
+        run: |
+          xcrun stapler staple .build/export/GroktoDash.app
+          hdiutil create -volname GroktoDash \
+            -srcfolder .build/export/GroktoDash.app \
+            -ov -format UDZO \
+            .build/GroktoDash.dmg
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: .build/GroktoDash.dmg
+          generate_release_notes: true

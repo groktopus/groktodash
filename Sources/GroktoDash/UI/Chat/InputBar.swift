@@ -18,6 +18,8 @@ struct InputBar: View {
                 .background(Color.primary.opacity(0.06))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .disabled(bus.isRunning)
+                .accessibilityLabel("Message input")
+                .accessibilityHint("Type your prompt and press Return to send")
 
             if bus.isRunning {
                 Button(action: { bus.stopRun() }) {
@@ -27,6 +29,8 @@ struct InputBar: View {
                 }
                 .buttonStyle(.plain)
                 .help("Stop run")
+                .accessibilityLabel("Stop Hermes")
+                .accessibilityHint("Stop the currently running Hermes task")
             } else {
                 Button(action: { send() }) {
                     Image(systemName: "arrow.up.circle.fill")
@@ -37,6 +41,8 @@ struct InputBar: View {
                 .disabled(text.isEmpty || bus.connectionStatus != .connected)
                 .keyboardShortcut(.return, modifiers: [])
                 .help("Send (Return)")
+                .accessibilityLabel("Send message")
+                .accessibilityHint("Send your prompt to Hermes")
             }
         }
         .padding(.horizontal, 12)

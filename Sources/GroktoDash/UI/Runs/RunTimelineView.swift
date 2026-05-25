@@ -63,5 +63,16 @@ struct ToolCallCard: View {
         .padding(.vertical, 6)
         .background(Color.secondary.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: 8))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(statusLabel) \(toolCall.toolName)")
+        .accessibilityHint(toolCall.preview)
+    }
+
+    private var statusLabel: String {
+        switch toolCall.status {
+        case .running: return "Running"
+        case .completed: return "Completed"
+        case .error: return "Error"
+        }
     }
 }
