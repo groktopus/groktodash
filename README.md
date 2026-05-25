@@ -16,21 +16,23 @@ workflows, and rich desktop integration.
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────┐
-│  GroktoDash.app                         │
-│  ┌─────────────┐  ┌───────────────────┐ │
-│  │ SwiftUI Chat │  │ SSE Event Stream  │ │
-│  │   + Timeline│  │   + Notifications │ │
-│  └──────┬───────┘  └────────┬──────────┘ │
-│         │  GroktoDashKit     │            │
-│         └────────┬───────────┘            │
-└──────────────────┼────────────────────────┘
-                   │ HTTP (Runs API)
-┌──────────────────┼────────────────────────┐
-│  Hermes API Server (external)             │
-│  /v1/runs  /v1/responses  /health         │
-└───────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph App["GroktoDash.app (macOS 26)"]
+        Chat["SwiftUI Chat + Timeline"]
+        SSE["SSE Event Stream + Notifications"]
+        Kit["GroktoDashKit (framework)"]
+        Chat --- Kit
+        SSE --- Kit
+    end
+
+    subgraph External["External Gateway"]
+        API["Hermes API Server\n/v1/runs • /v1/responses • /health"]
+        Agent["Hermes Agent\nCLI loop + tools"]
+        API --- Agent
+    end
+
+    Kit <-->|"HTTP (Runs API)"| API
 ```
 
 ## Features
