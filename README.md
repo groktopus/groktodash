@@ -1,6 +1,7 @@
 # GroktoDash
 
 ==THIS DOESN'T ACTUALLY WORK YET==
+
 GroktoDash is still in very early development.
 
 **Native macOS desktop client for [Hermes Agent](https://github.com/NousResearch/hermes-agent).**
