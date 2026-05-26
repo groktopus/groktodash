@@ -1,7 +1,8 @@
 # GroktoDash
 
-[!WARNING]
-THIS DOESN'T ACTUALLY WORK YET! Don't try to use it!
+| :warning: WARNING           |
+|:----------------------------|
+| THIS DOESN'T ACTUALLY WORK YET! Don't try to use it! |
 
 GroktoDash is still in very early development.
 
